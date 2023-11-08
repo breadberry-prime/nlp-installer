@@ -7,13 +7,22 @@
 log_file="install_script.log"
 
 # Function to print a message with a timestamp
+# Function to print a message with a timestamp
 log_message() {
-    echo "[$(date +%Y-%m-%dT%H:%M:%S%z)] $1" | tee -a "$log_file"
+    if [ -t 1 ]; then
+        echo -e "[$(date +%Y-%m-%dT%H:%M:%S%z)] $1" | tee -a "$log_file"
+    else
+        echo "[$(date +%Y-%m-%dT%H:%M:%S%z)] $1" | tee -a "$log_file"
+    fi
 }
 
 # Function to display a message with a checkmark
 print_checkmark() {
-    log_message "\\e[32m✔\\e[0m $1"
+    if [ -t 1 ]; then
+        log_message "\\e[32m✔\\e[0m $1"
+    else
+        log_message "✔ $1"
+    fi
 }
 
 # Function to display an error message and exit
