@@ -38,15 +38,15 @@ fi
 # Initialize Conda for future shell sessions
 conda init bash && print_checkmark "Conda init completed."
 
-source ~/.bashrc
+source ~/.bashrc && print_checkmark "Bashrc sourced."
 
-conda activate base
+conda activate base && print_checkmark "Base environment activated."
 
 # Create a new conda environment with Python 3.9
 conda create -n nlpenv python=3.9 -y >> install.log 2>&1 && print_checkmark "Environment 'nlpenv' created."
 
 # Activate the new environment
-conda activate nlpenv
+conda activate nlpenv && print_checkmark "Environment 'nlpenv' activated."
 
 # Install PyTorch and related packages
 conda install pytorch torchvision torchaudio cudatoolkit=11.8 -c pytorch -y >> install.log 2>&1 && print_checkmark "PyTorch installed."
