@@ -1,5 +1,5 @@
 import torch
-from coloroma import Fore, Style
+from colorama import Fore, Style
 
 print("installation-check.py")
 print("=" * 80)

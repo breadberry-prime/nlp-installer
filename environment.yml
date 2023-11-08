@@ -20,3 +20,4 @@ dependencies:
     - bitsandbytes
     - flask
     - python-dotenv
+    - colorama

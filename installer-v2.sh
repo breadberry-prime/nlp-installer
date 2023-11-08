@@ -7,7 +7,6 @@
 log_file="install_script.log"
 
 # Function to print a message with a timestamp
-# Function to print a message with a timestamp
 log_message() {
     if [ -t 1 ]; then
         echo -e "[$(date +%Y-%m-%dT%H:%M:%S%z)] $1" | tee -a "$log_file"
