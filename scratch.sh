@@ -4,13 +4,7 @@
 wget https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-x86_64.sh
 
 # Install Anaconda silently to the specified directory without manual intervention
-bash Anaconda3-2023.09-0-Linux-x86_64.sh -b -p $HOME/anaconda3
-
-# Add Anaconda to the PATH in .profile
-echo 'export PATH="$HOME/anaconda3/bin:$PATH"' >> $HOME/.profile
-
-# Source .profile to update the PATH
-source $HOME/.bashrc
+bash Anaconda3-2023.09-0-Linux-x86_64.sh -b
 
 conda init
 
