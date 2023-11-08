@@ -40,6 +40,8 @@ conda init bash && print_checkmark "Conda init completed."
 
 source ~/.bashrc
 
+conda activate base
+
 # Create a new conda environment with Python 3.9
 conda create -n nlpenv python=3.9 -y >> install.log 2>&1 && print_checkmark "Environment 'nlpenv' created."
 
