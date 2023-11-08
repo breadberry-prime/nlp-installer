@@ -42,8 +42,9 @@ conda init bash >> install.log 2>&1 && print_checkmark "Conda initialized."
 source ~/.bashrc || print_error "Could not source .bashrc file."
 
 # Create the conda environment from the YAML file
-conda env create -f environment.yml >> install.log 2>&1 && print_checkmark "Environment 'nlpenv' created from template."
-
+print_checkmark "Creating conda environment 'nlpenv' from YAML file."
+conda env create -f environment.yml
+print_checkmark "Conda environment 'nlpenv' created."
 # Activate the new environment
 conda activate nlpenv || { print_error "Failed to activate environment 'nlpenv'."; exit 1; }
 
