@@ -24,10 +24,21 @@ print_error() {
 wget https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-x86_64.sh --quiet --show-progress || { print_error "Failed to download Anaconda installer."; exit 1; }
 
 # Install Anaconda silently to the specified directory without manual intervention
-bash Anaconda3-2023.09-0-Linux-x86_64.sh -b -p $HOME/anaconda3 >> install.log 2>&1 && print_checkmark "Anaconda installed."
+bash Anaconda3-2023.09-0-Linux-x86_64.sh -b -p "$HOME/anaconda3" && print_checkmark "Anaconda installed."
 
-source $HOME/anaconda3/etc/profile.d/conda.sh
-conda init bash >> install.log 2>&1 || { print_error "Conda init failed."; exit 1; }
+# Check if the conda.sh script exists and source it
+if [ -f "$HOME/anaconda3/etc/profile.d/conda.sh" ]; then
+    source "$HOME/anaconda3/etc/profile.d/conda.sh"
+    print_checkmark "Conda config sourced."
+else
+    print_error "Conda config file not found."
+    exit 1
+fi
+
+# Initialize Conda for future shell sessions
+conda init bash && print_checkmark "Conda init completed."
+
+source ~/.bashrc
 
 # Create a new conda environment with Python 3.9
 conda create -n nlpenv python=3.9 -y >> install.log 2>&1 && print_checkmark "Environment 'nlpenv' created."
