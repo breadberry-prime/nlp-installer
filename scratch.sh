@@ -10,13 +10,15 @@ bash Anaconda3-2023.09-0-Linux-x86_64.sh -b -p $HOME/anaconda3
 echo 'export PATH="$HOME/anaconda3/bin:$PATH"' >> $HOME/.profile
 
 # Source .profile to update the PATH
-source $HOME/.profile
+source $HOME/.bashrc
+
+conda init
 
 # Create a new conda environment with Python 3.9
 conda create -n nlpenv python=3.9 -y
 
 # Activate the new environment
-source activate nlpenv
+conda activate nlpenv
 
 # Install PyTorch, torchvision, torchaudio, and cudatoolkit
 conda install pytorch torchvision torchaudio cudatoolkit=11.8 -c pytorch -y
