@@ -24,7 +24,7 @@ print_error() {
 wget https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-x86_64.sh --quiet --show-progress || { print_error "Failed to download Anaconda installer."; exit 1; }
 
 # Install Anaconda silently to the specified directory without manual intervention
-bash Anaconda3-2023.09-0-Linux-x86_64.sh -b >> install.log 2>&1 && print_checkmark "Anaconda installed."
+bash Anaconda3-2023.09-0-Linux-x86_64.sh -b -p $HOME/anaconda3 >> install.log 2>&1 && print_checkmark "Anaconda installed."
 
 source $HOME/anaconda3/etc/profile.d/conda.sh
 conda init bash >> install.log 2>&1 || { print_error "Conda init failed."; exit 1; }
