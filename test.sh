@@ -36,27 +36,16 @@ else
 fi
 
 # Initialize Conda for future shell sessions
-conda init bash && print_checkmark "Conda init completed."
+conda init bash >> install.log 2>&1 && print_checkmark "Conda initialized."
 
-source ~/.bashrc && print_checkmark "Bashrc sourced."
+# Source .bashrc to reflect changes (might not work as expected in a script)
+source ~/.bashrc || print_error "Could not source .bashrc file."
 
-conda activate base && print_checkmark "Base environment activated."
-
-# Create a new conda environment with Python 3.9
-conda create -n nlpenv python=3.9 -y >> install.log 2>&1 && print_checkmark "Environment 'nlpenv' created."
+# Create the conda environment from the YAML file
+conda env create -f environment.yml >> install.log 2>&1 && print_checkmark "Environment 'nlpenv' created from template."
 
 # Activate the new environment
-conda activate nlpenv && print_checkmark "Environment 'nlpenv' activated."
-
-# Install PyTorch and related packages
-conda install pytorch torchvision torchaudio cudatoolkit=11.8 -c pytorch -y >> install.log 2>&1 && print_checkmark "PyTorch installed."
-
-# Install other required packages using conda or pip within the environment
-pip install --upgrade torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 --quiet
-pip install --upgrade huggingface-hub transformers einops accelerate bitsandbytes flask python-dotenv --quiet && print_checkmark "Additional packages installed."
-
-# Set LD_LIBRARY_PATH environment variable
-export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
+conda activate nlpenv || { print_error "Failed to activate environment 'nlpenv'."; exit 1; }
 
 # Install PyCharm Professional (This still requires sudo and is system-wide)
 if sudo snap install pycharm-professional --classic; then
