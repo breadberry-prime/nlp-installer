@@ -73,6 +73,9 @@ fi
 log_message "Creating Conda environment 'nlpenv' from YAML file..."
 conda env create -f environment.yml >> "$log_file" 2>&1 && print_checkmark "Conda environment 'nlpenv' created." || print_error "Failed to create conda environment 'nlpenv'."
 
+git config --global user.name "Yaron Fanger"
+git config --global user.email "yaron.fanger@ylabs.ch"
+
 # Final message to the user
 print_checkmark "Installation successful!"
 log_message "Please run 'source ~/.bashrc' to enable conda and then 'conda activate nlpenv' to activate the environment."
