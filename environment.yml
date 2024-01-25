@@ -22,3 +22,10 @@ dependencies:
     - bitsandbytes
     - flask
     - python-dotenv
+    - git+https://github.com/huggingface/transformers.git
+    - git+https://github.com/huggingface/peft.git
+    - git+https://github.com/huggingface/accelerate.git
+    - datasets
+    - scipy
+    - ipywidgets
+    - matplotlib
