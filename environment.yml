@@ -20,6 +20,9 @@ dependencies:
     - evaluate
     - torchaudio
     - transformers
+    - librosa
+    - soundfile
+    - jiwer
     - einops
     - accelerate
     - bitsandbytes
