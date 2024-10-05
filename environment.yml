@@ -17,7 +17,6 @@ dependencies:
     - torchaudio==0.13.0
     - numpy==1.26.4
     - huggingface-hub
-    - huggingface-cli
     - evaluate
     - torchaudio
     - transformers
