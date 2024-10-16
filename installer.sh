@@ -40,7 +40,6 @@ cleanup() {
 # Check for prerequisites before proceeding
 check_prerequisites() {
     command -v wget >/dev/null 2>&1 || { echo >&2 "wget is required but it's not installed.  Aborting."; exit 1; }
-    command -v snap >/dev/null 2>&1 || { echo >&2 "snap is required but it's not installed.  Aborting."; exit 1; }
 }
 
 # Trap to catch any errors and execute the cleanup function
